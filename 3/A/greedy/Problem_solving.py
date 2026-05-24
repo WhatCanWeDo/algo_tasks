@@ -9,7 +9,6 @@ for _ in range(n):
 c = len(tasks)
 
 for i in range(c - 1):
-    swapped = False
     for j in range(n - 1 - i):
         if tasks[j] > tasks[j + 1]:
             tasks[j], tasks[j + 1] = tasks[j + 1], tasks[j]
@@ -24,5 +23,3 @@ for a, b in tasks:
     else:
         break
 print(solved_count)
-
-
