@@ -1,42 +1,58 @@
-deque = []
+data = [0] * 200
+
+head = 100
+tail = 100
+
 while True:
+
     command = input().split()
 
     if command[0] == "push_front":
-        number = int(command[1])
-        deque.insert(0,number)
+        head -= 1
+        data[head] = command[1]
         print("ok")
+
     elif command[0] == "push_back":
-        number = int(command[1])
-        deque.append(number)
+        data[tail] = command[1]
+        tail += 1
         print("ok")
+
     elif command[0] == "pop_front":
-        if not deque:
+        if head == tail:
             print("error")
         else:
-            value = deque.pop(0)
-            print(value)
+            print(data[head])
+            head += 1
+
     elif command[0] == "pop_back":
-        if not deque:
+        if head == tail:
             print("error")
         else:
-            value = deque.pop()
-            print(value)
-    elif command[0] == "size":
-        print(len(deque))
+            tail -= 1
+            print(data[tail])
+
     elif command[0] == "front":
-        if not deque:
+        if head == tail:
             print("error")
         else:
-            print(deque[0])
+            print(data[head])
+
     elif command[0] == "back":
-        if not deque:
+        if head == tail:
             print("error")
         else:
-            print(deque[-1])
+            print(data[tail - 1])
+
+    elif command[0] == "size":
+        print(tail - head)
+
     elif command[0] == "clear":
-        deque.clear()
+        head = 100
+        tail = 100
+    
         print("ok")
+
     elif command[0] == "exit":
         print("bye")
         break
+    
